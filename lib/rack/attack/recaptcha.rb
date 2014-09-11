@@ -1,5 +1,6 @@
 require "rack/attack"
 require "rack/attack/recaptcha/version"
+require "rack/attack/recaptcha/client_helper"
 
 module Rack
   module Attack
