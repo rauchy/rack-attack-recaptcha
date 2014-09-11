@@ -27,12 +27,12 @@ module Rack
             verification.must_equal("yay recaptcha! yay!")
           end
 
-          it "does nothing when not under attack" do
+          it "returns true by default when not under attack" do
             dummy_controller = DummyController.new
 
             verification = dummy_controller.verify_recaptcha_if_under_attack(foo: "yay")
 
-            verification.must_be_nil
+            verification.must_equal true
           end
         end
       end
