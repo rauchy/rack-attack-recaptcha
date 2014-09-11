@@ -2,6 +2,7 @@ require "rack/attack"
 require "rack/attack/recaptcha/version"
 require "rack/attack/recaptcha/client_helper"
 require "rack/attack/recaptcha/verification_helper"
+require "rack/attack/recaptcha/rails"
 
 module Rack
   module Attack
