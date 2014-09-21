@@ -14,7 +14,7 @@ class DummyView
 end
 
 module Rack
-  module Attack
+  class Attack
     module Recaptcha
       describe ClientHelper do
         describe ".recaptcha_tags_if_under_attack" do

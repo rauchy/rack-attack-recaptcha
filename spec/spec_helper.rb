@@ -1,8 +1,8 @@
+require "active_support"
 require "minitest/autorun"
 require "minitest/pride"
 require "rack/test"
 require "rack/attack/recaptcha"
-require "active_support"
 
 require 'rspec/mocks'
 

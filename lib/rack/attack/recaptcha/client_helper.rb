@@ -1,5 +1,5 @@
 module Rack
-  module Attack
+  class Attack
     module Recaptcha
       module ClientHelper
         def recaptcha_tags_if_under_attack(options={})
