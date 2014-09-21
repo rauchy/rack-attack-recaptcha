@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rspec-mocks", "~> 3.0.2"
 
-  spec.add_dependency "rails"
   spec.add_dependency "rack-attack"
   spec.add_dependency "recaptcha"
 end
