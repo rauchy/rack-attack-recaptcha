@@ -9,12 +9,13 @@ module Rack
       class << self
 
         def new(app)
-          @rack_attack = Rack::Attack.new(app).tap do |attack|
+          @rack_attack = Rack::Attack.new(app).tap { |attack|
             attack.class.throttled_response = lambda{|env|
               env["rack.attack.use_recaptcha"] = true
               app.call(env)
             }
-          end
+          }
+
           self
         end
 
