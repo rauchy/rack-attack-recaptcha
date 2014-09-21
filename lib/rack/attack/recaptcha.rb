@@ -8,14 +8,15 @@ module Rack
   class Attack
     module Recaptcha
       class << self
-        def new(app)
-          @rack_attack = Rack::Attack.new(app).tap { |attack|
-            attack.throttled_response = lambda { |env|
-              env["rack.attack.use_recaptcha"] = true
-              app.call(env)
-            }
-          }
+        @throttled_response = lambda { |env|
+          require 'pry'
+          binding.pry
+          env["rack.attack.use_recaptcha"] = true
+          app.call(env)
+        }
 
+        def new(app)
+          @rack_attack = Rack::Attack.new(app)
           self
         end
 

@@ -1,9 +1,14 @@
+require "bundler/setup"
+Bundler.setup
+
+require "action_view"
+require "active_support"
+require "action_controller"
 require "minitest"
 require "minitest/autorun"
 require "minitest/pride"
 require "rack/test"
 require "rack/attack/recaptcha"
-require "active_support"
 
 require 'rspec/mocks'
 
