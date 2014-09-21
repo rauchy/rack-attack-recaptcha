@@ -5,7 +5,7 @@ require "rack/attack/recaptcha/verification_helper"
 require "rack/attack/recaptcha/rails"
 
 module Rack
-  module Attack
+  class Attack
     module Recaptcha
       class << self
         def new(app)

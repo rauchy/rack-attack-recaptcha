@@ -14,7 +14,7 @@ class DummyController
 end
 
 module Rack
-  module Attack
+  class Attack
     module Recaptcha
       describe ClientHelper do
         describe ".verify_recaptcha_if_under_attack" do
