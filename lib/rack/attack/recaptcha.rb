@@ -2,21 +2,19 @@ require "rack/attack"
 require "rack/attack/recaptcha/version"
 require "rack/attack/recaptcha/client_helper"
 require "rack/attack/recaptcha/verification_helper"
-require "rack/attack/recaptcha/rails"
 
 module Rack
   class Attack
     module Recaptcha
       class << self
-        @throttled_response = lambda { |env|
-          require 'pry'
-          binding.pry
-          env["rack.attack.use_recaptcha"] = true
-          app.call(env)
-        }
 
         def new(app)
-          @rack_attack = Rack::Attack.new(app)
+          @rack_attack = Rack::Attack.new(app).tap do |attack|
+            attack.class.throttled_response = lambda{|env|
+              env["rack.attack.use_recaptcha"] = true
+              app.call(env)
+            }
+          end
           self
         end
 
