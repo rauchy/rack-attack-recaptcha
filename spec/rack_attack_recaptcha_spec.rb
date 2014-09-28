@@ -18,7 +18,7 @@ describe "Rack::Attack::Recaptcha" do
   before do
     @bad_ip = "1.2.3.4"
     Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
-    Rack::Attack.throttle("req/ip", :limit => 1, :period => 1) { |req| req.ip }
+    Rack::Attack.throttle("req/ip", :limit => 1, :period => 1, :type => :recaptcha) { |req| req.ip }
   end
 
   it "always delegates request to the underlying app" do

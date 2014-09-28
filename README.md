@@ -31,7 +31,14 @@ Tell your app to use the Rack::Attack middleware. For Rails 3+ apps:
     # In config/application.rb
     config.middleware.use Rack::Attack::Recaptcha
 
-To setup throttles, check out [rack-attack's](https://github.com/kickstarter/rack-attack)'s wiki.
+To setup Recaptcha throttles, you should specify the throttle's type to
+be `:recaptcha` as shown here:
+
+    Rack::Attack.throttle('req/ip', :limit => 5, :period => 1.second, :type => :recaptcha) do |req|
+      req.ip
+    end
+
+Check out [rack-attack's](https://github.com/kickstarter/rack-attack)'s wiki for more details on setting throttles.
 To setup Recaptcha credentials, check out [recaptcha](http://github.com/ambethia/recaptcha)'s wiki.
 
 ## Usage

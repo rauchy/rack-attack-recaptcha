@@ -7,12 +7,16 @@ module Rack
   class Attack
     module Recaptcha
       class << self
-
         def new(app)
+          @default_response = Rack::Attack.throttled_response
           @rack_attack = Rack::Attack.new(app).tap { |attack|
             attack.class.throttled_response = lambda { |env|
-              env["rack.attack.use_recaptcha"] = true
-              app.call(env)
+              if env["rack.attack.match_type"] == :recaptcha
+                env["rack.attack.use_recaptcha"] = true
+                app
+              else
+                @default_response
+              end.call(env)
             }
           }
 
